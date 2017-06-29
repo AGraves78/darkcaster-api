@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const darksky = require('../credentials').darksky; //be careful!!!
-const baseUrl = `https://api.darksky.net/forecast/${darksky}/37.8267,-122.4233`;
+const baseUrl = `https://api.darksky.net/forecast/${darksky}/`;
 const axios = require('axios');
 router.get('/weather', (request, response) => {
 const url = `${baseUrl}29, -82`;
@@ -14,6 +14,15 @@ const url = `${baseUrl}29, -82`;
         })
 });
 router.get('/weather/:lat,:lon', (request, response) => {
-  response.send('Here be the weather for that place');
+  const lat = request.params.lat;
+  const lon = request.params.lon;
+  const url = `${baseUrl}${lat},${lon}`;
+  axios get(url)
+        .then(weather => {
+          response.json(weather.data);
+        })
+        .catch(err => {
+          console.error(err);
+        });
 });
 module.exports = router;
