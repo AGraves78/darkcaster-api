@@ -5,7 +5,7 @@ const baseUrl = `https://api.darksky.net/forecast/${darksky}/`;
 const axios = require('axios');
 router.get('/weather', (request, response) => {
 const url = `${baseUrl}29, -82`;
-  axios.get(baseUrl)
+  axios.get(Url)
         .then(weather => {
           response.json(weather.data);
         })
