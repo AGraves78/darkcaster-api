@@ -4,7 +4,7 @@ const darksky = process.env.DARKSKY || require('../credentials').darksky; //be c
 const baseUrl = `https://api.darksky.net/forecast/${darksky}/`;
 const axios = require('axios');
 router.get('/weather', (request, response, next) => {
-const url = `${baseUrl}......29, -82`;
+const url = `${baseUrl}29, -82`;
   axios.get(url)
         .then(weather => {
           response.json(weather.data);
